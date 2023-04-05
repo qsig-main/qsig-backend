@@ -1,0 +1,63 @@
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Client Home</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="nav">
+            <input type="checkbox" id="nav-check">
+            <div class="nav-header">
+                <a href="/client/"><img class="admin-panel-image" src="{% static 'assets/qsig_logo.png' %}" alt="My Logo"></a>
+                <div class="nav-title">
+                    QSIG Members Admin Panel
+                </div>
+            </div>
+            <div class="nav-btn">
+              <label for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+              </label>
+            </div>
+            
+            <div class="nav-links">
+              <a href="/client/">Content Admin Panel</a>
+              <a href="/client/member/position/">Members Admin Panel (position)</a>
+              <a href="/client/member/create/">Create Member</a>
+              {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="login-button-link"><p class="login-button">Login<p></a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div>
+            <div class="item-category" id="item-category-m" onclick="toggleDivM()">Members</div>
+                <div class="item-container-m">
+                {% for m in members %}
+                    <div class="item-container-top">
+                        {% if m.do_not_display %}
+                            <div class="red-square"></div>
+                        {% else %}
+                            <div class="green-square"></div>
+                        {% endif %}
+                        <div class="item-title">{{ m.first_name }} {{ m.last_name }} | {{ m.position }} | {{ m.order }}</div>
+                    </div>
+                    <div class="item-container-bottom">
+                        <div><a class="button-pdf" href="/media/{{ m.headshot }}/" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-image-o"></i>IMG</a></div>
+                        <div><a class="button-update" href="/client/member/{{m.pk}}/"> Update</a></div>
+                        <div><a class="button-delete" href="/client/member/{{m.pk}}/delete/">Delete</a></div>
+                    </div>
+                    {% endfor %}
+                </div>
+          </div>
+          <script src="{% static 'js/display.js' %}"></script>
+    </body>
+</html>

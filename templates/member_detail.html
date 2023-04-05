@@ -1,0 +1,31 @@
+{% load rest_framework %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<html>
+    <body style="background-color: #D0F0C0;">
+        <h1>Member : {{ member.first_name }} {{ member.last_name }}</h1>
+        <form 
+            action="{% url 'client-member-detail' pk=member.pk %}" 
+            method="POST"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="member-container">
+                <div class="member-sub-container-1">{% render_field serializer.first_name style=style%}</div>
+                <div class="member-sub-container-2">{% render_field serializer.last_name style=style %}</div>
+                <div class="member-sub-container-0">{% render_field serializer.position style=style %}</div>
+                <div class="member-sub-container-3">{% render_field serializer.headshot style=style %}</div>
+                <div class="member-sub-container-4">{% render_field serializer.year style=style %}</div>
+                <div class="member-sub-container-5">{% render_field serializer.vertical style=style %}</div>
+                <div class="member-sub-container-6">{% render_field serializer.custom_vertical style=style %}</div>
+                <div class="member-sub-container-7">{% render_field serializer.company style=style %}</div>
+                <div class="member-sub-container-8">{% render_field serializer.LinkedIn style=style %}</div>
+                <div class="member-sub-container-9">{% render_field serializer.order style=style %}</div>
+                <input type="hidden" name="next" value="{{ refer }}">
+                <button class="member-sub-container-10 glow-on-hover" type="submit">Save</button>
+            </div>
+        </form>
+        <a href="{{ refer }}" class="button_xx">Cancel</a>
+    </body>
+</html>

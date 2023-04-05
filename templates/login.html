@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+<body>
+  <div class="main">
+    <h2 class="login_text">Login</h2>
+    <form class="red_border" method="post">
+      {% csrf_token %}
+        {{ form.as_hidden }}
+        <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" placeholder="Username">
+        <input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.name }}" placeholder="Password">
+      {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+      {% endif %}
+      <button class="glow-on-hover" type="submit">Login</button>
+    </form>
+    <a href="{% url 'home' %}" class="glow-on-hover button-back">Back</a>
+  </div>
+</body>
+</html>

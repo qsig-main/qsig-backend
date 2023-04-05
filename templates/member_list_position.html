@@ -1,0 +1,175 @@
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Client Home</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="nav">
+            <input type="checkbox" id="nav-check">
+            <div class="nav-header">
+                <a href="/client/"><img class="admin-panel-image" src="{% static 'assets/qsig_logo.png' %}" alt="My Logo"></a>
+                <div class="nav-title">
+                    QSIG Members Admin Panel
+                </div>
+            </div>
+            <div class="nav-btn">
+              <label for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+              </label>
+            </div>
+            
+            <div class="nav-links">
+              <a href="/client/">Content Admin Panel</a>
+              <a href="/client/member/">Members Admin Panel (total)</a>
+              <a href="/client/member/create/">Create Member</a>
+              {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="login-button-link"><p class="login-button">Login<p></a>
+                {% endif %}
+            </div>
+        </div>
+          <div>
+            <div class="item-category" id="item-category-cc" onclick="toggleDivCC()">Co-Chairs</div>
+                <div class="item-container-cc">
+                {% for cc in members %}
+                {% if cc.position == 'Co-Chair' %}
+                    <div class="item-container-top">
+                        {% if cc.do_not_display %}
+                            <div class="red-square"></div>
+                        {% else %}
+                            <div class="green-square"></div>
+                        {% endif %}
+                        <div class="item-title">{{ cc.first_name }} {{ cc.last_name }} | {{ cc.position }} | {{ cc.order }}</div>
+                    </div>
+                    <div class="item-container-bottom">
+                        <div><a class="button-pdf" href="/media/{{ cc.headshot }}/" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-image-o"></i>IMG</a></div>
+                        <div><a class="button-update" href="/client/member/{{cc.pk}}/"> Update</a></div>
+                        <div><a class="button-delete" href="/client/member/{{cc.pk}}/delete/">Delete</a></div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+          </div>
+          <div>
+            <div class="item-category" id="item-category-d" onclick="toggleDivD()">PM/Directors</div>
+                <div class="item-container-{% debug %}">
+                {% for d in members %}
+                {% if d.position == 'PM/Director' %}
+                    <div class="item-container-top">
+                        {% if d.do_not_display %}
+                            <div class="red-square"></div>
+                        {% else %}
+                            <div class="green-square"></div>
+                        {% endif %}
+                        <div class="item-title">{{ d.first_name }} {{ d.last_name }} | {{ d.position }} | {{ d.order }}</div>
+                    </div>
+                    <div class="item-container-bottom">
+                        <div><a class="button-pdf" href="{{ d.headshot }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i>PDF</a></div>
+                        <div><a class="button-update" href="/client/member/{{d.pk}}/"> Update</a></div>
+                        <div><a class="button-delete" href="/client/member/{{d.pk}}/delete/">Delete</a></div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+          </div>
+          <div>
+            <div class="item-category" id="item-category-sia" onclick="toggleDivSIA()">Senior Investment Analyst</div>
+                <div class="item-container-{% debug %}">
+                {% for sia in members %}
+                {% if sia.position == 'Senior Investment Analyst' %}
+                    <div class="item-container-top">
+                        {% if sia.do_not_display %}
+                            <div class="red-square"></div>
+                        {% else %}
+                            <div class="green-square"></div>
+                        {% endif %}
+                        <div class="item-title">{{ sia.first_name }} {{ sia.last_name }} | {{ sia.position }} | {{ sia.order }}</div>
+                    </div>
+                    <div class="item-container-bottom">
+                        <div><a class="button-pdf" href="{{ sia.headshot }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i>PDF</a></div>
+                        <div><a class="button-update" href="/client/member/{{sia.pk}}/"> Update</a></div>
+                        <div><a class="button-delete" href="/client/member/{{sia.pk}}/delete/">Delete</a></div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+          </div>
+          <div>
+            <div class="item-category" id="item-category-jia" onclick="toggleDivJIA()">Junior Investment Analyst</div>
+                <div class="item-container-{% debug %}">
+                {% for jia in members %}
+                {% if jia.position == 'Junior Investment Analyst' %}
+                    <div class="item-container-top">
+                        {% if jia.do_not_display %}
+                            <div class="red-square"></div>
+                        {% else %}
+                            <div class="green-square"></div>
+                        {% endif %}
+                        <div class="item-title">{{ jia.first_name }} {{ jia.last_name }} | {{ jia.position }} | {{ jia.order }}</div>
+                    </div>
+                    <div class="item-container-bottom">
+                        <div><a class="button-pdf" href="{{ jia.headshot }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i>PDF</a></div>
+                        <div><a class="button-update" href="/client/member/{{jia.pk}}/"> Update</a></div>
+                        <div><a class="button-delete" href="/client/member/{{jia.pk}}/delete/">Delete</a></div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+          </div>
+          <div>
+            <div class="item-category" id="item-category-tp" onclick="toggleDivTP()">Team Photo</div>
+                <div class="item-container-{% debug %}">
+                {% for tp in members %}
+                {% if tp.position == 'Team Photo' %}
+                    <div class="item-container-top">
+                        {% if tp.do_not_display %}
+                            <div class="red-square"></div>
+                        {% else %}
+                            <div class="green-square"></div>
+                        {% endif %}
+                        <div class="item-title">{{ tp.first_name }} {{ tp.last_name }} | {{ tp.position }} | {{ tp.order }}</div>
+                    </div>
+                    <div class="item-container-bottom">
+                        <div><a class="button-pdf" href="{{ tp.headshot }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i>PDF</a></div>
+                        <div><a class="button-update" href="/client/member/{{tp.pk}}/"> Update</a></div>
+                        <div><a class="button-delete" href="/client/member/{{tp.pk}}/delete/">Delete</a></div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+          </div>
+          <div>
+            <div class="item-category" id="item-category-n" onclick="toggleDiaN()">No Display/Other</div>
+                <div class="item-container-{% debug %}">
+                {% for n in members %}
+                {% if n.position == '' or n.position == 'No Display' %}
+                    <div class="item-container-top">
+                        {% if n.do_not_display %}
+                            <div class="red-square"></div>
+                        {% else %}
+                            <div class="green-square"></div>
+                        {% endif %}
+                        <div class="item-title">{{ n.first_name }} {{ n.last_name }} | {{ n.position }} | {{ n.order }}</div>
+                    </div>
+                    <div class="item-container-bottom">
+                        <div><a class="button-pdf" href="{{ n.headshot }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i>PDF</a></div>
+                        <div><a class="button-update" href="/client/member/{{n.pk}}/"> Update</a></div>
+                        <div><a class="button-delete" href="/client/member/{{n.pk}}/delete/">Delete</a></div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                </div>
+          </div>
+
+          <script src="{% static 'js/display.js' %}"></script>
+    </body>
+</html>

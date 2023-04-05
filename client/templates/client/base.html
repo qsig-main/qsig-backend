@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+            <a href="/client/"><img class="admin-panel-image" src="{% static 'assets/qsig_logo.png' %}" alt="My Logo"></a>
+            <div class="nav-title">
+                QSIG Content Admin Panel
+            </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+        
+        <div class="nav-links">
+          <a href="/client/member/">Members Admin Panel</a>
+          <a href="/client/pitch/create/">Create Pitch</a>
+          <a href="/client/pitch/img/create/">Create Featured Pitch Image</a>
+          <a href="/client/report/create/">Create Report</a>
+          <a href="/client/report/img/create/">Create Featured Report Image</a>
+          {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="login-button-link"><p class="login-button">Login<p></a>
+            {% endif %}
+        </div>
+      </div>
+      <div>
+        <div class="item-category" id="item-category-p" onclick="toggleDivP()">Pitches</div>
+            <div class="item-container-p">
+                {% for p in pitch %}
+                <div class="item-container-top">
+                    {% if p.do_not_display %}
+                        <div class="red-square"></div>
+                    {% else %}
+                        <div class="green-square"></div>
+                    {% endif %}
+                    <div class="item-title">{{ p.title }}</div>
+                </div>
+                <div class="item-container-bottom">
+                    <div><a class="button-pdf" href="{{ p.pdf }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i>PDF</a></div>
+                    <div><a class="button-cover" href="{{ p.cover }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-image-o"></i>Cover</a></div>
+                    <div><a class="button-update" href="/client/pitch/{{p.pk}}/"> Update</a></div>
+                    <div><a class="button-delete" href="/client/pitch/{{p.pk}}/delete/">Delete</a></div>
+                </div>
+                {% endfor %}
+            </div>
+      </div>
+      <div>
+        <div class="item-category" id="item-category-pi" onclick="toggleDivPi()">Pitch Images</div>
+            <div class="item-container-pi">
+            {% for pi in pitch_img %}
+                <div class="item-container-top">
+                    {% if pi.do_not_display %}
+                        <div class="red-square"></div>
+                    {% else %}
+                        <div class="green-square"></div>
+                    {% endif %}
+                    <div class="item-title">{{ pi.title }}</div>
+                </div>
+                <div class="item-container-bottom">
+                    <div><a class="button-pdf" href="{{ pi.image }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-image-o"></i>IMG</a></div>
+                    <div><a class="button-update" href="/client/pitch/img/{{pi.pk}}/"> Update</a></div>
+                    <div><a class="button-delete" href="/client/pitch/img/{{pi.pk}}/delete/">Delete</a></div>
+                </div>
+                {% endfor %}
+            </div>
+      </div>
+      <div>
+        <div class="item-category" id="item-category-r" onclick="toggleDivR()">Reports</div>
+            <div class="item-container-r">
+            {% for r in report %}
+                <div class="item-container-top">
+                    {% if r.do_not_display %}
+                        <div class="red-square"></div>
+                    {% else %}
+                        <div class="green-square"></div>
+                    {% endif %}
+                    <div class="item-title">{{ r.title }}</div>
+                </div>
+                <div class="item-container-bottom">
+                    <div><a class="button-pdf" href="{{ r.pdf }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-pdf-o"></i>PDF</a></div>
+                    <div><a class="button-cover" href="{{ r.cover }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-image-o"></i>Cover</a></div>
+                    <div><a class="button-update" href="/client/report/{{r.pk}}/"> Update</a></div>
+                    <div><a class="button-delete" href="/client/report/{{r.pk}}/delete/">Delete</a></div>
+                </div>
+                {% endfor %}
+            </div>
+      </div>
+      <div>
+        <div class="item-category" id="item-category-ri" onclick="toggleDivRi()">Report Images</div>
+            <div class="item-container-ri">
+            {% for ri in report_img %}
+                <div class="item-container-top">
+                    {% if ri.do_not_display %}
+                        <div class="red-square"></div>
+                    {% else %}
+                        <div class="green-square"></div>
+                    {% endif %}
+                    <div class="item-title">{{ ri.title }}</div>
+                </div>
+                <div class="item-container-bottom">
+                    <div><a class="button-pdf" href="{{ ri.image }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-image-o"></i>IMG</a></div>
+                    <div><a class="button-update" href="/client/report/img/{{ri.pk}}/"> Update</a></div>
+                    <div><a class="button-delete" href="/client/report/img/{{ri.pk}}/delete/">Delete</a></div>
+                </div>
+                {% endfor %}
+            </div>
+      </div>
+    <script src="{% static 'js/display.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+Notes:
+image should be links to images
+Don't forget only authenticated access
+
+Layout a)
+4 Folders (flippable)
+Each folder for each type (pitch, pitch image, report, report image)
+Each div should have update button, delete button
+create button at top
+create/update should lead to form page
+
+
+Layout b)
+4 separate pages for each (pitch, pitch image, report, report image)
+each item should have update button, delete button
+create button at top
+create space below,
+or create/update lead to form page
+
+Layout c)...
+base and list.html are the main page, will redirect to change api
+
+
+
+*******BOOLEAN FIELD

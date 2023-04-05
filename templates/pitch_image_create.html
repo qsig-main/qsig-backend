@@ -1,0 +1,20 @@
+{% load rest_framework %}
+{% load static %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<html>
+    <body style="background-color: #D1E5F4;">
+        <h1>CREATE FEATURED PITCH IMAGE (jpeg/png)</h1>
+        <p>h:w ratio | 1:1.413 ratio</p>
+        <form 
+            action="{% url 'client-pitch-image-create' %}" 
+            method="POST" 
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            {% render_form serializer %}
+            <input type="submit" value="Save" class="button_x">
+        </form>
+        <a href="{% url 'home' %}" class="button_xx">Cancel</a>
+    </body>
+</html>

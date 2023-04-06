@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-j2fy#qkpbdldzd-vhr6l-m^*o89^tq9394=n+bn)8dvgk#7ym6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -121,6 +121,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# https://qsigback.nyc3.digitaloceanspaces.com
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

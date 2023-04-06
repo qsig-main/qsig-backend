@@ -14,8 +14,8 @@ class Report(models.Model):
     cover = models.ImageField(upload_to='Images/', default='Images/None/image_default.png')
 
     def __str__(self):
-        return """user: %s | title: %s
-        """%(self.user, self.title)
+        return """title: %s
+        """%(self.title)
 
 class ReportImage(models.Model):
     # user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)

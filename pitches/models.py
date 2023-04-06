@@ -1,8 +1,8 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
-User = settings.AUTH_USER_MODEL
+# User = settings.AUTH_USER_MODEL
 
 class Pitch(models.Model):
     # user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
@@ -15,8 +15,8 @@ class Pitch(models.Model):
     cover = models.ImageField(upload_to='Images/', default='Images/None/image_default.png')
 
     def __str__(self):
-        return """user: %s | title: %s
-        """%(self.user, self.title)
+        return """title: %s
+        """%(self.title)
 
 class PitchImage(models.Model):
     # user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)

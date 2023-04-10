@@ -43,6 +43,9 @@ class Member(models.Model):
     order = models.IntegerField(default=0)
     do_not_display = models.BooleanField(default=False)
 
+    def __str__(self):
+        return  """name: %s %s | position: %s | vertical: %s """%(self.first_name, self.last_name, self.position, self.vertical)
+
 
 
 

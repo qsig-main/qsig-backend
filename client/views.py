@@ -56,7 +56,7 @@ def logout_view(request):
 # @login_required ***uncomment if want nobody to see client/******
 def home(request):
     # url of pitch endpoint
-    pitch_endpoint = "http://web-production-e20e7.up.railway.app/api/pitch/" 
+    pitch_endpoint = "/api/pitch/" 
     # get the information at the endpoint
     pitch_get_response = requests.get(pitch_endpoint)
     # turn the information into json
@@ -64,15 +64,15 @@ def home(request):
     # pitch_data['results'] <-- extracting information from the pitch_data object (look at api for json format)
     # 'pitch': pitch_data['results'] <-- key: pitch, value: pitch_data['results] (value is list of objects)
 
-    pitch_img_endpoint = "http://web-production-e20e7.up.railway.app/api/pitch/img/"
+    pitch_img_endpoint = "/api/pitch/img/"
     pitch_img_get_response = requests.get(pitch_img_endpoint)
     pitch_img_data = pitch_img_get_response.json()
 
-    report_endpoint = "http://web-production-e20e7.up.railway.app/api/report/"
+    report_endpoint = "/api/report/"
     report_get_response = requests.get(report_endpoint)
     report_data = report_get_response.json()
 
-    report_img_endpoint = "http://web-production-e20e7.up.railway.app/api/report/img/"
+    report_img_endpoint = "/api/report/img/"
     report_img_get_response = requests.get(report_img_endpoint)
     report_img_data = report_img_get_response.json()
 

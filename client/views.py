@@ -58,10 +58,9 @@ def home(request):
     # url of pitch endpoint
     pitch_endpoint = "https://web-production-e20e7.up.railway.app/api/pitch/" 
     # # get the information at the endpoint
-    test_get_response = requests.get("https://www.google.com")
-    pitch_get_response = requests.get(pitch_endpoint)
+    # pitch_get_response = requests.get(pitch_endpoint)
     # turn the information into json
-    pitch_data = pitch_get_response.json()
+    # pitch_data = pitch_get_response.json()
     # pitch_data['results'] <-- extracting information from the pitch_data object (look at api for json format)
     # 'pitch': pitch_data['results'] <-- key: pitch, value: pitch_data['results] (value is list of objects)
 

@@ -77,10 +77,10 @@ def home(request):
     report_img_data = report_img_get_response.json()
 
     return render(request, 'client/base.html', {
-        'pitch': pitch_data['results'],
-        'pitch_img': pitch_img_data['results'],
-        'report': report_data['results'],
-        'report_img': report_img_data['results'],
+        # 'pitch': pitch_data['results'],
+        # 'pitch_img': pitch_img_data['results'],
+        # 'report': report_data['results'],
+        # 'report_img': report_img_data['results'],
     })
 
 acceptable_image_types = ['jpg', 'jpeg', 'png', 'tiff', 'tif', 'gif']

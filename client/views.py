@@ -59,17 +59,17 @@ def home(request):
     pitch_endpoint = "https://web-production-e20e7.up.railway.app/api/pitch/" 
     # # get the information at the endpoint
     test_get_response = requests.get("https://www.google.com")
-    # pitch_get_response = requests.get(pitch_endpoint)
-    # # turn the information into json
-    # pitch_data = pitch_get_response.json()
-    # # pitch_data['results'] <-- extracting information from the pitch_data object (look at api for json format)
-    # # 'pitch': pitch_data['results'] <-- key: pitch, value: pitch_data['results] (value is list of objects)
+    pitch_get_response = requests.get(pitch_endpoint)
+    # turn the information into json
+    pitch_data = pitch_get_response.json()
+    # pitch_data['results'] <-- extracting information from the pitch_data object (look at api for json format)
+    # 'pitch': pitch_data['results'] <-- key: pitch, value: pitch_data['results] (value is list of objects)
 
     # pitch_img_endpoint = "https://web-production-e20e7.up.railway.app/api/pitch/img/"
     # pitch_img_get_response = requests.get(pitch_img_endpoint)
     # pitch_img_data = pitch_img_get_response.json()
 
-    # report_endpoint = "https://web-production-e20e7.up.railway.app0/api/report/"
+    # report_endpoint = "https://web-production-e20e7.up.railway.app/api/report/"
     # report_get_response = requests.get(report_endpoint)
     # report_data = report_get_response.json()
 
@@ -78,7 +78,7 @@ def home(request):
     # report_img_data = report_img_get_response.json()
 
     return render(request, 'client/base.html', {
-        # 'pitch': pitch_data['results'],
+        'pitch': pitch_data['results'],
         # 'pitch_img': pitch_img_data['results'],
         # 'report': report_data['results'],
         # 'report_img': report_img_data['results'],

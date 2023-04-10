@@ -56,7 +56,7 @@ def logout_view(request):
 # @login_required ***uncomment if want nobody to see client/******
 def home(request):
     # url of pitch endpoint
-    # pitch_endpoint = "https://web-production-e20e7.up.railway.app/api/pitch/" 
+    pitch_endpoint = "https://web-production-e20e7.up.railway.app/api/pitch/" 
     # # get the information at the endpoint
     # pitch_get_response = requests.get(pitch_endpoint)
     # # turn the information into json

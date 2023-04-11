@@ -2,5 +2,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def home(request):
-
-    return HttpResponse('Violet Evergarden')
+    return HttpResponse('Go to /admin')

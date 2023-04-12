@@ -15,7 +15,7 @@ DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://*.web-production-e20e7.up.railway.app','https://*.127.0.0.1', 'https://*.web-production-deeb.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://*.web-production-e20e7.up.railway.app','https://*.127.0.0.1']
 
 
 # Application definition
@@ -83,9 +83,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'LjxGlBH07PmzeuFkR0Xb',
-        'HOST': 'containers-us-west-199.railway.app',
-        'PORT': '7795',
+        'PASSWORD': 'EzsjmTzykqXFZgUjBrBn',
+        'HOST': 'containers-us-west-207.railway.app',
+        'PORT': '7595',
     }
 }
 

@@ -15,7 +15,7 @@ DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-1acdf.up.railway.app/',
+CSRF_TRUSTED_ORIGINS = ['https://web-production-1acdf.up.railway.app',
                        'https://qsig.club',
                        'https://qsig-frontend-psi.vercel.app']
 
